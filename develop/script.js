@@ -1,5 +1,16 @@
 // Assignment code here
+function generatePassword (length) {
+  let finalPass = '';
+  let passChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%!'
+  let passLength = passChars.length;
 
+  for (var i = 0; i < length; i++) {
+    finalPass += passChars.charAt(Math.floor(Math.random() * passLength));
+  }
+  return finalPass;
+}
+
+console.log(pass(15));
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
