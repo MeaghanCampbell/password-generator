@@ -1,34 +1,69 @@
-// Define Variables
+// Define character variables
 
-// Computer asks user if they would like their password to include numbers
+let numbers = '0123456789'
+let lowerLetters = 'abcdefghijklmnopqrstuvwxyz'
+let upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let symbols = '!@#$%^&*+=-_?/~:;';
 
-let finalPass = '';
-let passChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%!'
-let passLength = passChars.length;
+// Function to choose which characters user wants password to include
 
-let generatePassword = function(length) {
+let chooseChars = function () {
+  var chooseNumbers = window.confirm('Would you like to include numbers in your password?');
 
-  for (var i = 0; i < length; i++) {
-    finalPass += passChars.charAt(Math.floor(Math.random() * passLength));
-  }
-  return finalPass;
-}
-
-let ask = function() {
-  var includeNumbers = window.confirm('Would you like to include numbers in your password?');
-  var includeLetters = window.confirm('Would you like to include letters in your password?');
-  var includeSymbols = window.confirm('Would you like to include symbols in your password?');
-
-  if (includeNumbers && includeLetters && includeSymbols) {
-    generatePassword();
+  if (chooseNumbers) {
+    console.log('use numbers')
   } else {
-    console.log('You must choose a valid answer')
+    console.log('no numbers')
+  }
+
+  var chooseLowerLetters = window.confirm('Would you like to include lowercase letters in your password?')
+
+  if (chooseLowerLetters) {
+    console.log('use lowercase letters')
+  } else {
+    console.log('no lowercase letters')
+  }
+
+  var chooseUpperLetters = window.confirm('Would you like to use uppercase letters in your password?')
+
+  if (chooseUpperLetters) {
+    console.log('use uppercase letters')
+  } else {
+    console.log('no uppercase letters')
+  }
+
+  var chooseSymbols = window.confirm('Would you like to use symbols in your password?')
+
+  if (chooseSymbols) {
+    console.log('use symbols')
+  } else {
+    console.log('no symbols')
   }
 }
 
-ask();
+// Function to generate the password
 
-generatePassword(15);
+let generatePassword = function() {
+
+  var numOfChars = window.prompt('Please choose a length for you password between 8 and 128 characters.');
+  
+  if (numOfChars > 8 && numOfChars < 128) {
+    chooseChars();
+  } else {
+    alert('Answer invalid. Please choose a number between 8 and 128.')
+    return generatePassword();
+  }
+}
+
+// Calling generate password function when generate button us pushed
+
+if (generateBtn) {
+  generatePassword();
+}
+
+
+
+
 
 
 
@@ -45,4 +80,37 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword)
+
+
+
+
+
+
+
+
+
+
+ /* let passLength = passChars.length;
+
+
+
+    for (var i = 0; i < length; i++) {
+      finalPass += passChars.charAt(Math.floor(Math.random() * passLength));
+    }
+    return finalPass;
+  
+
+let ask = function () {
+  var includeNumbers = window.confirm('Would you like to include numbers in your password?');
+  var includeLetters = window.confirm('Would you like to include letters in your password?');
+  var includeSymbols = window.confirm('Would you like to include symbols in your password?');
+
+  if (includeNumbers && includeLetters && includeSymbols) {
+    generatePassword();
+  } else {
+    console.log('must choose vaild response')
+  }
+}
+}; */
+
